@@ -4,6 +4,10 @@ set -eu
 dest="${1:-master}"
 current="$(git symbolic-ref --short HEAD)"
 
-[ "$current" != "$dest" ] || exit
+[ "$current" != "$dest" ] || exit 0
 
-git format-patch "$(git merge-base HEAD "$dest")..$dest" --stdout | git apply --check -
+patch="$(git format-patch "$(git merge-base HEAD "$dest")..$dest" --stdout)"
+
+[ "$patch" != "" ] || exit 0
+
+echo "$patch" | git apply --check -
