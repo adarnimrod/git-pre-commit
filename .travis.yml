@@ -28,10 +28,6 @@ matrix:
           script:
               - pre-commit run --all-files
         - language: shell
-          env:
-              PATH: "$HOME/bats/bin:$PATH"
-          install:
-              - git clone --depth 1 https://github.com/sstephenson/bats.git "$HOME/bats"
           script:
               bats -t tests/
 
