@@ -13,7 +13,7 @@ Status](https://travis-ci.org/adarnimrod/git-pre-commit.svg?branch=master)](http
 Add the following to your project's `.pre-commit-config.yaml`:
 
     -    repo: https://www.shore.co.il/git/git-pre-commit
-         sha: v0.1.0
+         sha: v0.1.1
          hooks:
          - id: merge-conflict
            args: ['production'] # In case the branch to check against is NOT master.
