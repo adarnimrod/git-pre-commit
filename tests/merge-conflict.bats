@@ -13,6 +13,9 @@ export repo="$BATS_TMPDIR/testrepo"
         git commit -m "Initial commit."
         git checkout -b master2
         git checkout -b no-conflict
+        echo 1 > file2
+        git add file2
+        git commit -m "Another not-conflicting commit."
         git checkout -b conflict
         echo 2 > file
         git commit file -m "Conflict with master."
@@ -38,6 +41,12 @@ export repo="$BATS_TMPDIR/testrepo"
     cd "$repo"
     git checkout master || true
     merge-conflict master2
+}
+
+@test "Empty patch" {
+    cd "$repo"
+    git checkout master2 || true
+    merge-conflict
 }
 
 @test "Conflict" {
