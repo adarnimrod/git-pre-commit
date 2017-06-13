@@ -16,6 +16,7 @@ Add the following to your project's `.pre-commit-config.yaml`:
          sha: v0.1.0
          hooks:
          - id: merge-conflict
+           args: ['production'] # In case the branch to check against is NOT master.
            always_run: True
 
 ## License
