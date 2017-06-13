@@ -2,7 +2,7 @@
 set -eu
 
 dest="${1:-master}"
-current="$(git symbolic-ref --short HEAD)"
+current="$(git symbolic-ref --short HEAD)" || exit 0  # Detached head.
 
 [ "$current" != "$dest" ] || exit 0
 

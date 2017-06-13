@@ -25,6 +25,12 @@ export repo="$BATS_TMPDIR/testrepo"
     fi
 }
 
+@test "Detached head" {
+    cd "$repo"
+    git checkout "$(git rev-parse HEAD)"
+    merge-conflict
+}
+
 @test "Same branch" {
     cd "$repo"
     git checkout master || true
