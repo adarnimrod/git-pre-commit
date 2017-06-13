@@ -1,5 +1,5 @@
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v0.7.1
+    sha: v0.8.0
     hooks:
     -   id: check-added-large-files
     -   id: check-merge-conflict
@@ -8,10 +8,10 @@
     sha: v0.5.4
     hooks:
     -   id: shell-lint
-        files: &shellscripts 'merge-conflict'
+        files: &shellscripts '^merge-conflict$'
     -   id: shellcheck
         files: *shellscripts
--   repo: ./
-    sha: HEAD
+-   repo: https://www.shore.co.il/git/git-pre-commit/
+    sha: master
     hooks:
     - id: merge-conflict

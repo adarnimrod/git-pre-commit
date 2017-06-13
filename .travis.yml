@@ -1,6 +1,4 @@
 ---
-language: python
-python: "3.6"
 dist: trusty
 sudo: false
 group: beta
@@ -11,22 +9,31 @@ cache:
       - $HOME/.cabal
       - $HOME/.ghc
 
-addons:
-  apt:
-    packages:
-      - cabal-install
-      - ghc
-
-env:
-    PATH: "$HOME/bats/bin:$HOME/.cabal/bin:$PATH"
-
-install:
-  - cabal update && cabal install shellcheck
-  - pip install pre_commit | cat
-  - git clone --depth 1 https://github.com/sstephenson/bats.git "$HOME/bats"
-
-script:
-  - pre-commit run --all-files
+matrix:
+    fast_finish: True
+    include:
+        - language: python
+          python: "3.6"
+          env:
+              PATH: "$HOME/.cabal/bin:$PATH"
+          addons:
+            apt:
+              packages:
+                  - cabal-install
+                  - ghc
+          install:
+              - cabal update && cabal install shellcheck
+              - pip install pre_commit | cat
+              - pre-commit install-hooks
+          script:
+              - pre-commit run --all-files
+        - language: shell
+          env:
+              PATH: "$HOME/bats/bin:$PATH"
+          install:
+              - git clone --depth 1 https://github.com/sstephenson/bats.git "$HOME/bats"
+          script:
+              bats -t tests/
 
 notifications:
   on_failure: never
