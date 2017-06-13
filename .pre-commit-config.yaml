@@ -12,6 +12,6 @@
     -   id: shellcheck
         files: *shellscripts
 -   repo: https://www.shore.co.il/git/git-pre-commit/
-    sha: master
+    sha: v0.1.0
     hooks:
     - id: merge-conflict
