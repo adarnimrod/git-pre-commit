@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+dest="${1:-master}"
+current="$(git symbolic-ref --short HEAD)"
+
+[ "$current" != "$dest" ] || exit
+
+git format-patch "$(git merge-base HEAD "$dest")..$dest" --stdout | git apply --check -

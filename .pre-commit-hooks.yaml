@@ -1,0 +1,8 @@
+---
+- id: merge-conflict
+  name: merge conflicts
+  description: Checks for merge conflicts to the master branch.
+  language: script
+  entry: merge-conflict
+  files: '$^'
+  always_run: True
