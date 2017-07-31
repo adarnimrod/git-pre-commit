@@ -3,7 +3,7 @@
 export PATH="$BATS_TEST_DIRNAME/../:$PATH"
 export repo="$BATS_TMPDIR/testrepo"
 
-@test "setup" {
+setup () {
     if [ ! -f "$repo/file" ]
     then
         git init "$repo"
@@ -61,6 +61,6 @@ export repo="$BATS_TMPDIR/testrepo"
     ! merge-conflict
 }
 
-@test "teardown" {
+teardown () {
     rm -rf "$repo"
 }
