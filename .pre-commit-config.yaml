@@ -1,5 +1,5 @@
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v0.8.0
+    sha: v0.9.1
     hooks:
     -   id: check-added-large-files
     -   id: check-merge-conflict
@@ -14,4 +14,4 @@
 -   repo: https://www.shore.co.il/git/git-pre-commit/
     sha: v0.1.1
     hooks:
-    - id: merge-conflict
+    -   id: merge-conflict
