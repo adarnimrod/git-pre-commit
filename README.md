@@ -12,7 +12,7 @@ Status](https://travis-ci.org/adarnimrod/git-pre-commit.svg?branch=master)](http
 
 Add the following to your project's `.pre-commit-config.yaml`:
 
-    -    repo: https://www.shore.co.il/git/git-pre-commit
+    -    repo: https://git.shore.co.il/nimrod/git-pre-commit.git
          sha: v0.1.1
          hooks:
          - id: merge-conflict
@@ -28,4 +28,4 @@ This software is licensed under the MIT license (see the `LICENSE.txt` file).
 Nimrod Adar, [contact me](mailto:nimrod@shore.co.il) or visit my
 [website](https://www.shore.co.il/). Patches are welcome via [git
 send-email](http://git-scm.com/book/en/v2/Git-Commands-Email). The repository is
-located at <https://www.shore.co.il/git/>.
+located at <https://git.shore.co.il/nimrod/>.
