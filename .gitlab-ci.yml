@@ -21,4 +21,11 @@ bats:
     - git config --global user.email "you@example.com"
     - git config --global user.name "Your Name"
   script:
-    - bats tests/
+    - bats tests/ | tee results.tap
+  after_script:
+    # yamllint disable-line rule:line-length
+    - wget https://github.com/cloudbees-oss/juxr/releases/download/0.1.22/juxr-x86_64-unknown-linux-musl.tar.gz -O - | tar -xz
+    - ./juxr tap --name bats --output results/ -- cat results.tap
+  artifacts:
+    reports:
+      junit: results/*.xml
