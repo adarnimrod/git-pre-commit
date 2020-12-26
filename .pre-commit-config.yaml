@@ -1,17 +1,39 @@
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    sha: v0.9.1
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+    rev: v3.4.0
     hooks:
-    -   id: check-added-large-files
-    -   id: check-merge-conflict
-    -   id: check-yaml
--   repo: https://git.shore.co.il/nimrod/shell-pre-commit.git
-    sha: v0.5.4
+      - id: check-added-large-files
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-yaml
+      - id: trailing-whitespace
+
+  - repo: https://git.shore.co.il/nimrod/shell-pre-commit.git
+    rev: v0.6.0
     hooks:
-    -   id: shell-lint
-        files: &shellscripts '^merge-conflict$'
-    -   id: shellcheck
-        files: *shellscripts
--   repo: https://git.shore.co.il/nimrod/git-pre-commit.git
-    sha: v0.1.1
+      - id: shell-lint
+      - id: shellcheck
+
+  - repo: https://git.shore.co.il/nimrod/git-pre-commit.git
+    rev: v0.1.1
     hooks:
-    -   id: merge-conflict
+      - id: merge-conflict
+
+  - repo: https://github.com/pre-commit/pre-commit.git
+    rev: v2.9.3
+    hooks:
+      - id: validate_manifest
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.25.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/amperser/proselint.git
+    rev: 0.10.2
+    hooks:
+      - id: proselint
+        types: [plain-text]
+        exclude: LICENSE

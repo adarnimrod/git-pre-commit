@@ -1,0 +1,24 @@
+---
+stages:
+  - test
+
+pre-commit:
+  stage: test
+  image: adarnimrod/ci-images:pre-commit
+  variables:
+    XDG_CACHE_HOME: "$CI_PROJECT_DIR/.cache"
+  script:
+    - pre-commit run --all-files
+  cache:
+    paths:
+      - .cache/
+
+bats:
+  stage: test
+  image: alpine
+  before_script:
+    - apk add --update bats git
+    - git config --global user.email "you@example.com"
+    - git config --global user.name "Your Name"
+  script:
+    - bats tests/

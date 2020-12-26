@@ -5,4 +5,4 @@
   language: script
   entry: merge-conflict
   files: '$^'
-  always_run: True
+  always_run: true
