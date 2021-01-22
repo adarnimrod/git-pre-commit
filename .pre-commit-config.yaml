@@ -7,37 +7,36 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: check-symlinks
-      - id: check-yaml
       - id: trailing-whitespace
 
-  - repo: https://git.shore.co.il/nimrod/shell-pre-commit.git
-    rev: v0.6.0
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v0.14.3
     hooks:
-      - id: shell-lint
+      - id: detect-secrets
 
-  - repo: https://github.com/shellcheck-py/shellcheck-py.git
-    rev: v0.7.1.1
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.25.0
     hooks:
-      - id: shellcheck
+      - id: yamllint
 
-  - repo: https://git.shore.co.il/nimrod/git-pre-commit.git
-    rev: v0.1.1
+  - repo: https://github.com/amperser/proselint/
+    rev: 0.10.2
     hooks:
-      - id: merge-conflict
+      - id: proselint
+        types: [plain-text]
+        exclude: LICENSE
+
+  - repo: https://github.com/executablebooks/mdformat.git
+    rev: 0.5.3
+    hooks:
+      - id: mdformat
 
   - repo: https://github.com/pre-commit/pre-commit.git
     rev: v2.9.3
     hooks:
       - id: validate_manifest
 
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.25.0
+  - repo: https://git.shore.co.il/nimrod/git-pre-commit.git
+    rev: v0.1.1
     hooks:
-      - id: yamllint
-
-  - repo: https://github.com/amperser/proselint.git
-    rev: 0.10.2
-    hooks:
-      - id: proselint
-        types: [plain-text]
-        exclude: LICENSE
+      - id: merge-conflict
