@@ -1,31 +1,8 @@
 ---
-stages:
-  - test
-
-pre-commit:
-  stage: test
-  image: adarnimrod/ci-images:pre-commit
-  variables:
-    XDG_CACHE_HOME: "$CI_PROJECT_DIR/.cache"
-  script:
-    - pre-commit run --all-files
-  cache:
-    paths:
-      - .cache/
-
-bats:
-  stage: test
-  image: alpine
-  before_script:
-    - apk add --update bats git
-    - git config --global user.email "you@example.com"
-    - git config --global user.name "Your Name"
-  script:
-    - bats tests/ | tee results.tap
-  after_script:
-    # yamllint disable-line rule:line-length
-    - wget https://github.com/cloudbees-oss/juxr/releases/download/0.1.22/juxr-x86_64-unknown-linux-musl.tar.gz -O - | tar -xz
-    - ./juxr tap --name bats --output results/ -- cat results.tap
-  artifacts:
-    reports:
-      junit: results/*.xml
+include:
+  - project: shore/ci-templates
+    file: templates/pre-commit.yml
+  - project: shore/ci-templates
+    file: templates/pre-commit-repo.yml
+  - project: shore/ci-templates
+    file: templates/bats.yml
