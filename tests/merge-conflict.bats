@@ -6,6 +6,8 @@ setup () {
     then
         git init "$repo"
         cd "$repo"
+        git config user.name "Your Name"
+        git config user.email "name@example.com"
         echo 1 > file
         git add file
         git commit -m "Initial commit."
