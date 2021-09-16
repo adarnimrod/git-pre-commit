@@ -5,6 +5,7 @@ setup () {
     if [ ! -f "$repo/file" ]
     then
         git init "$repo"
+        # shellcheck disable=SC2164
         cd "$repo"
         git config user.name "Your Name"
         git config user.email "name@example.com"
