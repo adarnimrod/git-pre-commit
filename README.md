@@ -1,5 +1,8 @@
 # Git pre-commit hooks
 
+**This project has been discontinued and has been replaced by
+[pre-commit-hooks](https://git.shore.co.il/nimrod/pre-commit-hooks).**
+
 [![pipeline status](https://git.shore.co.il/nimrod/git-pre-commit/badges/master/pipeline.svg)](https://git.shore.co.il/nimrod/git-pre-commit/-/commits/master)
 
 [Pre-commit](http://pre-commit.com/) Git related hooks.
